@@ -89,12 +89,12 @@ Le guide a pour but de couvrir les points importants et erreurs récurrentes dan
 
 ## I. Présentation des outils d’accessibilité
 
-Les personnes handicapées rencontrent des difficultés dans l'accès à l'information (applications, sites <span lang="en">Web</span>, etc.). Pour y pallier, elles utilisent des "technologies d'assistance". On peut distinguer deux grandes catégories de technologies d'assistance&nbsp;: logicielles et matérielles.
+Les personnes en situation de handicap rencontrent des difficultés dans l'accès à l'information (applications, sites <span lang="en">Web</span>, etc.). Pour y pallier, elles utilisent des "technologies d'assistance". On peut distinguer deux grandes catégories de technologies d'assistance&nbsp;: logicielles et matérielles.
 
 
 ### Les logiciels
 
-Des logiciels permettent de rendre accessibles les applications mobiles aux personnes handicapées, notamment aux déficients visuels (non et mal-voyants). Ceux-ci sont soit disponibles "par défaut" dans le système d'exploitation et peuvent souvent être activés simplement via les paramètres d'accessibilité, soit installables séparément.
+Des logiciels permettent de rendre accessibles les applications mobiles aux personnes en situation de handicap, notamment aux déficients visuels (non et mal-voyants). Ceux-ci sont soit disponibles "par défaut" dans le système d'exploitation et peuvent souvent être activés simplement via les paramètres d'accessibilité, soit installables séparément.
 
 On trouve&nbsp;:
 
@@ -137,14 +137,14 @@ On peut citer&nbsp;:
 
 * Clavier&nbsp;: permet aux utilisateurs de naviguer à l'intérieur des interfaces sans utiliser la gestuelle définie par le système&nbsp;; facilite les opérations de saisie.
 * Afficheur braille&nbsp;: ce dispositif est utilisé par les personnes aveugles, souvent en complément de la synthèse vocale. Un afficheur braille est constitué d'un ensemble de "picots" qui montent et descendent afin de permettre de produire du braille de manière dynamique. Selon, les modèles, il peut afficher entre 12 et 80 caractères. Il dispose de touches de navigation, et pour certains, d'un clavier braille ou "ordinaire" qui permet de saisir du texte.
-* Smartphones adaptés aux personnes handicapées&nbsp;: des fabricants ont créé des modèles adaptés aux personnes handicapées (écran de taille plus importante, présence de touches pour faciliter la navigation, etc.).
+* Smartphones adaptés aux personnes en situation de handicap&nbsp;: des fabricants ont créé des modèles adaptés aux personnes en situation de handicap (écran de taille plus importante, présence de touches pour faciliter la navigation, etc.).
 
 ## II. Introduction au lecteur d’écran
 
 ### Présentation TalkBack et VoiceOver
 
 <span lang="en">TalkBack</span> et <span lang="en">VoiceOver</span> sont des lecteurs d'écran qui restituent vocalement l'application mobile et vos actions sur celle-ci.
-Un lecteur d'écran pour mobile permet de naviguer dans l'application de deux façons&nbsp;: 
+Un lecteur d'écran pour mobile permet de naviguer dans l'application de deux façons&nbsp;:
 * En explorant au toucher, le lecteur d'écran restitue vocalement les éléments sous le doigt.
 * En utilisant les gestes de navigation, en balayant vers la droite ou vers la gauche, le focus va se déplacer vers l'élément suivant ou précédent.
 
@@ -251,7 +251,7 @@ Pour modifier la taille de la police sous <span lang="en">iOS</span>&nbsp;:
  * Sous <span lang="en">iOS</span> 7, rendez-vous dans **Réglages > Général > Taille du texte**.
  * Faites glisser le curseur afin d’augmenter ou de réduire la taille de la police.
 
-Source&nbsp;: [Modification de la taille de la police](https://support.apple.com/fr-fr/HT202828) 
+Source&nbsp;: [Modification de la taille de la police](https://support.apple.com/fr-fr/HT202828)
 
 ### Afficher la sortie vocale sous Android
 
@@ -534,7 +534,7 @@ Pour chaque lien de téléchargement, des informations relatives à sa consultat
 ##### Test
 
 1. Ouvrir l'application.
-2. Repérer les fichiers en téléchargement non produits de manière dynamique. 
+2. Repérer les fichiers en téléchargement non produits de manière dynamique.
 3. Résultat&nbsp;: Chaque fichier en téléchargement a des informations relatives à son format, à son poids, et si nécessaire, à sa langue.
 
 ##### Correspondances
@@ -563,7 +563,7 @@ Pour faciliter la navigation et ne pas perdre l'utilisateur dans l'application, 
 
 #### Labels
 
-Chaque zone de saisie doit avoir un label pertinent. Il est important pour l'utilisateur de comprendre le contenu qu'il doit saisir 
+Chaque zone de saisie doit avoir un label pertinent. Il est important pour l'utilisateur de comprendre le contenu qu'il doit saisir
 
 ##### Test
 
@@ -729,4 +729,3 @@ Les guides suivants peuvent être consultés en complément&nbsp;:
 
 ## Licence
 Ce document est la propriété du Secrétariat général à la modernisation de l'action publique français (SGMAP). Il est placé sous la [licence ouverte 1.0 ou ultérieure](http://wiki.data.gouv.fr/wiki/Licence_Ouverte_/_Open_Licence), équivalente à une licence <i lang="en">Creative Commons BY</i>. Pour indiquer la paternité, ajouter un lien vers la version originale du document disponible sur le [compte <span lang="en">Github</span> de la DInSIC](https://github.com/DISIC).
-
