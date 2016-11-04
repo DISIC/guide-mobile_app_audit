@@ -372,7 +372,7 @@ Pour faciliter la lecture, la taille du texte peut être augmentée via les opti
 
 ##### Correspondances
 
-[Critère 10.4 [AA] Dans chaque page Web, le texte reste-t-il lisible lorsque la taille des caractères est augmentée jusqu'à 200%, au moins&nbsp;?](http://references.modernisation.gouv.fr/referentiel-technique-0#title-critre-104-aa-dans-chaque-page-web-le-texte-reste-t-il-lisible-lorsque-la-taille-des-caractres-est-augmente-jusqu-200-au-moins-)
+[Critère 10.4 [AA] Dans chaque page Web, le texte reste-t-il lisible lorsque la taille des caractères est augmentée jusqu'à 200%, au moins&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-10-4)
 
 [<span lang="en">Zoom</span> (en anglais)](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/design/zoom)
 
@@ -422,7 +422,7 @@ Il est important de vérifier que le contraste sur mobile est supérieur à 4,5.
 
 ##### Correspondances
 
-[Critère 3.3&nbsp;: Contraste entre la couleur du texte et la couleur de son arrière-plan est-il suffisamment élevé](http://references.modernisation.gouv.fr/referentiel-technique-0#title-critre-33-aa-dans-chaque-page-web-le-contraste-entre-la-couleur-du-texte-et-la-couleur-de-son-arrire-plan-est-il-suffisamment-lev-hors-cas-particuliers-)
+[Critère 3.3&nbsp;: Contraste entre la couleur du texte et la couleur de son arrière-plan est-il suffisamment élevé](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-3-3)
 
 #### Information donnée par la couleur
 
@@ -437,9 +437,9 @@ Vérifier que l'information n'est pas donnée uniquement par la couleur.
 
 ##### Correspondances
 
-[Critère 3.1 [A] Dans chaque page Web, l'information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle respectée&nbsp;?](http://references.modernisation.gouv.fr/referentiel-technique-0#title-critre-31-a-dans-chaque-page-web-linformation-ne-doit-pas-tre-donne-uniquement-par-la-couleur-cette-rgle-est-elle-respecte-)
+[Critère 3.1 [A] Dans chaque page Web, l'information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle respectée&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-3-1)
 
-[Critère 3.2 [A] Dans chaque page Web, l'information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle implémentée de façon pertinente&nbsp;?](http://references.modernisation.gouv.fr/referentiel-technique-0#title-critre-32-a-dans-chaque-page-web-linformation-ne-doit-pas-tre-donne-uniquement-par-la-couleur-cette-rgle-est-elle-implmente-de-faon-pertinente-)
+[Critère 3.2 [A] Dans chaque page Web, l'information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle implémentée de façon pertinente&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-3-2)
 
 ### Multimédia
 
@@ -455,9 +455,9 @@ Vérifier la présence d'un bouton ou d'un lien proche du média temporel pré-e
 
 ##### Correspondances
 
-[Critère 4.1 [A] Chaque média temporel pré-enregistré a-t-il, si nécessaire, une transcription textuelle ou une audio-description (hors cas particuliers)&nbsp;?](http://references.modernisation.gouv.fr/referentiel-technique-0#title-critre-41-a-chaque-mdia-temporel-pr-enregistr-a-t-il-si-ncessaire-une-transcription-textuelle-ou-une-audio-description-hors-cas-particuliers-)
+[Critère 4.1 [A] Chaque média temporel pré-enregistré a-t-il, si nécessaire, une transcription textuelle ou une audio-description (hors cas particuliers)&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-4-1)
 
-[Critère 4.2 [A] Pour chaque média temporel pré-enregistré ayant une transcription textuelle ou une audio-description synchronisée, celles-ci sont-elles pertinentes (hors cas particuliers)&nbsp;?](http://references.modernisation.gouv.fr/referentiel-technique-0#title-critre-42-a-pour-chaque-mdia-temporel-pr-enregistr-ayant-une-transcription-textuelle-ou-une-audio-description-synchronise-celles-ci-sont-elles-pertinentes-hors-cas-particuliers-)
+[Critère 4.2 [A] Pour chaque média temporel pré-enregistré ayant une transcription textuelle ou une audio-description synchronisée, celles-ci sont-elles pertinentes (hors cas particuliers)&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-4-2)
 
 #### Sous-titres
 
@@ -472,9 +472,9 @@ Les sous-titres permettent au sourd ou malentendant d'obtenir un équivalent du 
 
 ##### Correspondances
 
-[Critère 4.3 [A] Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, des sous-titres synchronisés (hors cas particuliers)&nbsp;?](http://references.modernisation.gouv.fr/referentiel-technique-0#title-critre-43-a-chaque-mdia-temporel-synchronis-pr-enregistr-a-t-il-si-ncessaire-des-sous-titres-synchroniss-hors-cas-particuliers-)
+[Critère 4.3 [A] Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, des sous-titres synchronisés (hors cas particuliers)&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-4-3)
 
-[Critère 4.4 [A] Pour chaque média temporel synchronisé pré-enregistré ayant des sous-titres synchronisés, ces sous-titres sont-ils pertinents&nbsp;?](http://references.modernisation.gouv.fr/referentiel-technique-0#title-critre-44-a-pour-chaque-mdia-temporel-synchronis-pr-enregistr-ayant-des-sous-titres-synchroniss-ces-sous-titres-sont-ils-pertinents-)
+[Critère 4.4 [A] Pour chaque média temporel synchronisé pré-enregistré ayant des sous-titres synchronisés, ces sous-titres sont-ils pertinents&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-4-4)
 
 #### Lecture automatique
 
@@ -489,9 +489,9 @@ La lecture automatique de son peut dans certains cas perturber la perception aud
 
 ##### Correspondances
 
-[Critère 4.18 [A] Chaque son déclenché automatiquement est-il contrôlable par l'utilisateur&nbsp;?](http://references.modernisation.gouv.fr/referentiel-technique-0#title-critre-418-a-chaque-son-dclench-automatiquement-est-il-contrlable-par-lutilisateur-)
+[Critère 4.18 [A] Chaque son déclenché automatiquement est-il contrôlable par l'utilisateur&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-4-18)
 
-[Critère 13.17 [A] Dans chaque page Web, chaque contenu en mouvement ou clignotant est-il contrôlable par l'utilisateur&nbsp;?](https://references.modernisation.gouv.fr/referentiel-technique-0#title-critre-1317-a-dans-chaque-page-web-chaque-contenu-en-mouvement-ou-clignotant-est-il-contrlable-par-lutilisateur-)
+[Critère 13.17 [A] Dans chaque page Web, chaque contenu en mouvement ou clignotant est-il contrôlable par l'utilisateur&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-13-17)
 
 [<span lang="en">Autoplay</span> (en anglais)](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/audio-and-video/autoplay)
 
@@ -523,7 +523,7 @@ Vérifier que le lien ou button est explicite. L'intitulé ou le contexte permet
 
 ##### Correspondances
 
-[Critère 6.1 [A] Chaque lien est-il explicite (hors cas particuliers)](http://references.modernisation.gouv.fr/referentiel-technique-0#title-critre-61-a-chaque-lien-est-il-explicite-hors-cas-particuliers-)
+[Critère 6.1 [A] Chaque lien est-il explicite (hors cas particuliers)](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-6-1)
 
 [<span lang="en">Descriptive links</span> (en anglais)](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/links/descriptive-links)
 
@@ -539,7 +539,7 @@ Pour chaque lien de téléchargement, des informations relatives à sa consultat
 
 ##### Correspondances
 
-[Critère 13.6 [A] Dans chaque page Web, pour chaque fichier en téléchargement, des informations relatives à sa consultation sont-elles présentes (hors cas particuliers)&nbsp;?](https://references.modernisation.gouv.fr/referentiel-technique-0#title-critre-136-a-dans-chaque-page-web-pour-chaque-fichier-en-tlchargement-des-informations-relatives-sa-consultation-sont-elles-prsentes-hors-cas-particuliers-)
+[Critère 13.6 [A] Dans chaque page Web, pour chaque fichier en téléchargement, des informations relatives à sa consultation sont-elles présentes (hors cas particuliers)&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-13-6)
 
 
 ### Structure
@@ -556,7 +556,7 @@ Pour faciliter la navigation et ne pas perdre l'utilisateur dans l'application, 
 
 ##### Correspondances
 
-[Critère 12.2 [AA] Dans chaque ensemble de pages, le menu ou les barres de navigation sont-ils toujours à la même place (hors cas particuliers)&nbsp;?](http://references.modernisation.gouv.fr/referentiel-technique-0#title-critre-122-aa-dans-chaque-ensemble-de-pages-le-menu-ou-les-barres-de-navigation-sont-ils-toujours-la-mme-place-hors-cas-particuliers-)
+[Critère 12.2 [AA] Dans chaque ensemble de pages, le menu ou les barres de navigation sont-ils toujours à la même place (hors cas particuliers)&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-12-2)
 
 
 ### Zones de saisie
@@ -575,9 +575,9 @@ Chaque zone de saisie doit avoir un label pertinent. Il est important pour l'uti
 
 ##### Correspondances
 
-[Critère 11.1 [A] Chaque champ de formulaire a-t-il une étiquette&nbsp;?](http://references.modernisation.gouv.fr/referentiel-technique-0#title-critre-111-a-chaque-champ-de-formulaire-a-t-il-une-tiquette-)
+[Critère 11.1 [A] Chaque champ de formulaire a-t-il une étiquette&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-11-1)
 
-[Critère 11.2 [A] Chaque étiquette associée à un champ de formulaire est-elle pertinente&nbsp;?](http://references.modernisation.gouv.fr/referentiel-technique-0#title-critre-112-a-chaque-tiquette-associe-un-champ-de-formulaire-est-elle-pertinente-)
+[Critère 11.2 [A] Chaque étiquette associée à un champ de formulaire est-elle pertinente&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-11-2)
 
 [<span lang="en">labels</span> (en anglais)](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/forms/labels)
 
@@ -613,7 +613,7 @@ Vérifier que l'intégralité de l'application est correctement restituée par l
 
 ##### Correspondances
 
-[Critère 12.13 [A] Dans chaque page Web, l'ordre de tabulation est-il cohérent&nbsp;?](http://references.modernisation.gouv.fr/referentiel-technique-0#title-critre-1213-a-dans-chaque-page-web-lordre-de-tabulation-est-il-cohrent-)
+[Critère 12.13 [A] Dans chaque page Web, l'ordre de tabulation est-il cohérent&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-12-13)
 
 [<span lang="en">Focus order</span> (en anglais)](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/focus/focus-order)
 
@@ -630,7 +630,7 @@ Vérifier que la prise de <span lang="en">focus</span> est correctement signalé
 
 ##### Correspondances
 
-[Critère 10.7 [A] Dans chaque page Web, pour chaque élément recevant le focus, la prise de focus est-elle visible&nbsp;?](#title-critre-107-a-dans-chaque-page-web-pour-chaque-lment-recevant-le-focus-la-prise-de-focus-est-elle-visible-)
+[Critère 10.7 [A] Dans chaque page Web, pour chaque élément recevant le focus, la prise de focus est-elle visible&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-10-7)
 
 [<span lang="en">Visible focus</span> (en anglais)](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/design/visible-focus)
 
@@ -648,7 +648,7 @@ Vérifier que la prise de <span lang="en">focus</span> est correctement signalé
 
 ##### Correspondances
 
-[Critère 12.14 [A] Dans chaque page Web, la navigation ne doit pas contenir de piège au clavier. Cette règle est-elle respectée&nbsp;?](http://references.modernisation.gouv.fr/referentiel-technique-0#title-critre-1214-a-dans-chaque-page-web-la-navigation-ne-doit-pas-contenir-de-pige-au-clavier-cette-rgle-est-elle-respecte-)
+[Critère 12.14 [A] Dans chaque page Web, la navigation ne doit pas contenir de piège au clavier. Cette règle est-elle respectée&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-12-14)
 
 [<span lang="en">Keyboard trap</span> (en anglais)](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/focus/keyboard-trap)
 
@@ -666,7 +666,7 @@ Sous mobile l'écran doit être rafraîchie uniquement sous l'action de l'utilis
 
 ##### Correspondances
 
-[Critère 13.1 [A] Pour chaque page Web, l'utilisateur a-t-il le contrôle de chaque limite de temps modifiant le contenu (hors cas particuliers)&nbsp;?](http://references.modernisation.gouv.fr/referentiel-technique-0#title-critre-131-a-pour-chaque-page-web-lutilisateur-a-t-il-le-contrle-de-chaque-limite-de-temps-modifiant-le-contenu-hors-cas-particuliers-)
+[Critère 13.1 [A] Pour chaque page Web, l'utilisateur a-t-il le contrôle de chaque limite de temps modifiant le contenu (hors cas particuliers)&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-13-1)
 
 [<span lang="en">Page refreshes</span> (en anglais)](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/scripts-and-dynamic-content/page-refreshes)
 
@@ -683,9 +683,7 @@ Il faut éviter d'afficher des contenus qui changent brusquement de luminosité 
 
 ##### Correspondances
 
-[Critère 13.15 [A] Dans chaque page Web, les changements brusques de luminosité ou les effets de flash sont-ils correctement utilisés&nbsp;?](https://references.modernisation.gouv.fr/referentiel-technique-0#title-critre-1315-a-dans-chaque-page-web-les-changements-brusques-de-luminosit-ou-les-effets-de-flash-sont-ils-correctement-utiliss-)
-
-
+[Critère 13.15 [A] Dans chaque page Web, les changements brusques de luminosité ou les effets de flash sont-ils correctement utilisés&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-13-15)
 
 #### Orientation du mobile
 
@@ -712,7 +710,7 @@ Source&nbsp;: [<span lang="en">WTF Mobile</span> (en anglais)](http://wtfmobilew
 
 ## Ressources et références
 
-* [Référentiel Technique RGAA 3](http://references.modernisation.gouv.fr/referentiel-technique-0)
+* [Référentiel Technique RGAA 3](http://references.modernisation.gouv.fr/rgaa/criteres.html)
 * [Référentiel spécifique aux plateformes mobiles/tactiles](https://github.com/DISIC/referentiel-mobile-tactile)
 * <a href="http://www.w3.org/TR/mobile-accessibility-mapping/" lang="en">Mobile Accessibility&nbsp;: How WCAG 2.0 and Other W3C/WAI Guidelines Apply to Mobile</a>
 * <a href="http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile" lang="en">BBC Standards and Guidelines for Mobile Accessibility</a>
@@ -728,4 +726,4 @@ Les guides suivants peuvent être consultés en complément&nbsp;:
 * [Guide de développement d'applications mobiles hybrides accessibles avec Ionic et OnsenUI](https://github.com/DISIC/guide-mobile_app_dev_hybride)
 
 ## Licence
-Ce document est la propriété du Secrétariat général à la modernisation de l'action publique français (SGMAP). Il est placé sous la [licence ouverte 1.0 ou ultérieure](http://wiki.data.gouv.fr/wiki/Licence_Ouverte_/_Open_Licence), équivalente à une licence <i lang="en">Creative Commons BY</i>. Pour indiquer la paternité, ajouter un lien vers la version originale du document disponible sur le [compte <span lang="en">Github</span> de la DInSIC](https://github.com/DISIC).
+Ce document est la propriété du Secrétariat général à la modernisation de l'action publique français (SGMAP). Il est placé sous la [licence ouverte 1.0 ou ultérieure](http://www.etalab.gouv.fr/licence-ouverte-open-licence), équivalente à une licence <i lang="en">Creative Commons BY</i>. Pour indiquer la paternité, ajouter un lien vers la version originale du document disponible sur le [compte <span lang="en">Github</span> de la DInSIC](https://github.com/DISIC).
