@@ -1,729 +1,736 @@
-# Guide d'audit d'applications mobiles
+# Mobile app audit guide
 
 
-## Sommaire
+## Table of contents
 
- * [Sommaire](#sommaire)
- * [À qui s'adresse ce guide ?](#%C3%80-qui-sadresse-ce-guide-)
- * [Introduction](#introduction)
- * [I. Présentation des outils d’accessibilité](#i-pr%C3%A9sentation-des-outils-daccessibilit%C3%A9)
-   * [Les logiciels](#les-logiciels)
-   * [Le matériel](#le-mat%C3%A9riel)
- * [II. Introduction au lecteur d’écran](#ii-introduction-au-lecteur-d%C3%A9cran)
-   * [Présentation TalkBack et VoiceOver](#pr%C3%A9sentation-talkback-et-voiceover)
-     * [Activer TalkBack sous Android](#activer-talkback-sous-android)
-     * [Activer VoiceOver sous iOS](#activer-voiceover-sous-ios)
-   * [Gestuelle de base pour réaliser un audit](#gestuelle-de-base-pour-r%C3%A9aliser-un-audit)
-     * [Déplacer le focus sur l'élément suivant](#d%C3%A9placer-le-focus-sur-l%C3%A9l%C3%A9ment-suivant)
-     * [Déplacer le focus sur l'élément précédent](#d%C3%A9placer-le-focus-sur-l%C3%A9l%C3%A9ment-pr%C3%A9c%C3%A9dent)
-     * [Sélectionner l'élément mis en surbrillance](#s%C3%A9lectionner-l%C3%A9l%C3%A9ment-mis-en-surbrillance)
-     * [Scroller dans l'application](#scroller-dans-lapplication)
-   * [Gestes avancés](#gestes-avanc%C3%A9s)
- * [III. Outils de test pour l’auditeur](#iii-outils-de-test-pour-lauditeur)
-   * [Prendre une capture d'écran de l'application](#prendre-une-capture-d%C3%A9cran-de-lapplication)
-   * [Activer le mode grands caractères](#activer-le-mode-grands-caract%C3%A8res)
-     * [Android](#android)
-     * [iOS](#ios)
-   * [Afficher la sortie vocale sous Android](#afficher-la-sortie-vocale-sous-android)
-   * [Afficher les contours sous Android](#afficher-les-contours-sous-android)
-   * [Utiliser l'inspecteur d'accessibilité sous iOS](#utiliser-linspecteur-daccessibilit%C3%A9-sous-ios)
- * [IV. Thèmes](#iv-th%C3%A8mes)
-   * [Taille des éléments de l'interface](#taille-des-l-ments-de-l-interface)
-     * [Taille des zones sensibles](#taille-des-zones-sensibles)
-     * [Marge extérieure suffisante](#marge-ext%C3%A9rieure-suffisante)
-     * [Taille du texte](#taille-du-texte)
-   * [Images](#images)
-     * [Image porteuse d'information](#image-porteuse-dinformation)
-     * [Boutons images](#boutons-images)
-   * [Couleurs](#couleurs)
-     * [Contraste](#contraste)
-     * [Information donnée par la couleur](#information-donn%C3%A9e-par-la-couleur)
-   * [Multimédia](#multim%C3%A9dia)
-     * [Transcription](#transcription)
-     * [Sous-titres](#sous-titres)
-     * [Lecture automatique](#lecture-automatique)
-     * [Notification sonore](#notification-sonore)
-   * [Boutons et liens](#boutons-et-liens)
-     * [Description des boutons et des liens](#description-des-boutons-et-des-liens)
-     * [Informations relatives aux fichiers en téléchargement](#information-relative-aux-fichiers-en-t%C3%A9l%C3%A9chargement)
-   * [Structure](#structure)
-     * [Menu de navigation à la même place](#menu-de-navigation-%C3%A0-la-m%C3%AAme-place)
-   * [Zones de saisie](#zones-de-saisie)
-     * [Labels](#labels)
-     * [Type input](#type-input)
-   * [Focus](#focus)
-     * [Éléments focusables](#%C3%89l%C3%A9ments-focusables)
-     * [Piège au clavier](#pi%C3%A8ge-au-clavier)
-   * [Consultation](#consultation)
-     * [Rafraîchissement automatique](#rafra%C3%AEchissement-automatique)
-     * [Effet de flash](#effet-de-flash)
-     * [Orientation du mobile](#orientation-du-mobile)
- * [Ressources et références](#ressources-et-r%C3%A9f%C3%A9rences)
- * [Guides connexes](#guides-connexes)
- * [Licence](#licence)
+<!-- MarkdownTOC depth="3" -->
+
+- [Who is this guide for?](#who-is-this-guide-for)
+- [Introduction](#introduction)
+- [I. Presentation of accessibility tools](#i-presentation-of-accessibility-tools)
+  - [Software](#software)
+  - [Hardware](#hardware)
+- [II. Introduction to screen readers](#ii-introduction-to-screen-readers)
+  - [Presentation of TalkBack and VoiceOver](#presentation-of-talkback-and-voiceover)
+    - [Turn on TalkBack on Android](#turn-on-talkback-on-android)
+    - [Turn on VoiceOver on iOS](#turn-on-voiceover-on-ios)
+  - [Basic gestures to perform an audit](#basic-gestures-to-perform-an-audit)
+    - [Move the focus to the next item](#move-the-focus-to-the-next-item)
+    - [Move the focus to the previous item](#move-the-focus-to-the-previous-item)
+    - [Select the highlighted item](#select-the-highlighted-item)
+    - [Scroll in the application](#scroll-in-the-application)
+  - [Advanced Gestures](#advanced-gestures)
+- [III. Testing tools for auditors](#iii-testing-tools-for-auditors)
+  - [Take a screenshot of the application](#take-a-screenshot-of-the-application)
+  - [Enable Large Characters mode](#enable-large-characters-mode)
+    - [Android](#android)
+    - [iOS](#ios)
+  - [Display speech output on Android](#display-speech-output-on-android)
+  - [Display layout bounds on Android](#display-layout-bounds-on-android)
+  - [Using the Accessibility Inspector on iOS](#using-the-accessibility-inspector-on-ios)
+- [IV. Topics](#iv-topics)
+  - [User interface elements size](#user-interface-elements-size)
+    - [Touch target size](#touch-target-size)
+    - [Sufficient outside margin](#sufficient-outside-margin)
+    - [Text size](#text-size)
+  - [Images](#images)
+    - [Image conveying information](#image-conveying-information)
+    - [Image buttons](#image-buttons)
+  - [Colors](#colors)
+    - [Contrast](#contrast)
+    - [Information conveyed through color](#information-conveyed-through-color)
+  - [Multimedia](#multimedia)
+    - [Transcription](#transcription)
+    - [Captions](#captions)
+    - [Autoplay](#autoplay)
+    - [Sound notification](#sound-notification)
+  - [Buttons and Links](#buttons-and-links)
+    - [Description of buttons and links](#description-of-buttons-and-links)
+    - [Downloadable files information](#downloadable-files-information)
+  - [Structure](#structure)
+    - [Consistent layout for navigation menus](#consistent-layout-for-navigation-menus)
+  - [Input fields](#input-fields)
+    - [Labels](#labels)
+    - [Type input](#type-input)
+  - [Focus management](#focus-management)
+    - [Focusable elements](#focusable-elements)
+    - [Focus visibility](#focus-visibility)
+    - [Keyboard trap](#keyboard-trap)
+  - [Consultation](#consultation)
+    - [Automatic refresh](#automatic-refresh)
+    - [Flash Effect](#flash-effect)
+    - [Mobile Orientation](#mobile-orientation)
+- [Resources and References](#resources-and-references)
+- [Related documents](#related-documents)
+- [Licence](#licence)
+
+<!-- /MarkdownTOC -->
 
 
+## Who is this guide for?
 
-## À qui s'adresse ce guide ?
+This guide presents the steps you need to perform to audit the accessibility of a mobile application. It is aimed at:
 
-Ce guide présente les étapes à effectuer pour auditer l'accessibilité d'une application mobile. Il s'adresse&nbsp;:
- * Aux développeurs
- * Aux testeurs ou auditeurs
+ * Developers
+ * Testers or auditors
 
-Pré-requis&nbsp;:
- * Être familiarisé avec les principes, les règles et les critères de <abbr title="Référentiel général d'Accessibilité pour les Administrations">RGAA</abbr> 3
- * Connaître les principes de navigation clavier sous <abbr lang="en" title="Personal Computer">PC</abbr>
- * Être familiarisé avec l'<abbr lang="en" title="Operating System">OS</abbr> mobile à tester
+Prerequisites:
+
+ * Be familiar with the principles, rules and criteria of the <abbr lang="fr" title = "Référentiel Général d'Accessibilité pour les Administrations">RGAA</abbr> 3;
+ * Know the keyboard navigation principles with a <abbr title = "Personal Computer">PC</abbr>;
+ * Be familiar with the mobile <abbr title = "Operating System">OS</abbr> used for testing.
 
 
 ## Introduction
 
-Les applications natives mobiles introduisent une nouvelle façon de réaliser les tests.
-Il n'est pas possible d'inspecter le code depuis le mobile, ou de naviguer au clavier à la manière d'un PC du fait que le système de navigation soit simplifié sur mobile (commutateurs, geste de navigation…).
-Ce nouvel environnement impose au développeur de tester l'application avec les technologies d'assistance. L'environnement d'une application native diffère complètement d'une application web où l'on peut appliquer les normes WCAG. La prise en compte de l'accessibilité doit être adaptée pour répondre à ce nouveau support tactile. De plus, l'accessibilité peut être traitée de façon très différente, d'un <span lang="en">OS</span> à un autre, par le développeur. Le lecteur d'écran étant natif à l'<span lang="en">OS</span>, le développeur peut introduire des comportements différents suivant le statut du lecteur d'écran, rendant de fait les tests au lecteur d'écran nécessaires.
+Native mobile applications introduce a new way to carry out accessibility testing.
+It is not possible to inspect the code from the mobile device, nor to navigate the keyboard like with a PC, because the navigation system is simplified on mobile (switches, navigation gestures&hellip;).
+This new environment requires from the developer to test the application with assistive technologies. The environment of a native application differs completely from a web application where WCAG standards can be applied. Accessibility guidelines must be adapted to comply with the specificities of this new tactile support. In addition, accessibility can be supported very differently, from one OS to another, by the developer. Because the screen reader is native to the OS, the developer can introduce different behaviors depending on the status of the screen reader. This possibility makes testing with a screen reader a necessary step.
 
-Ce guide est destiné aux auditeurs voulant vérifier l'accessibilité d'une application mobile native. Il n'est pas nécessaire d'avoir accès au code source, il suffit qu'elle soit installée sur le support cible suivant la version de l'<span lang="en">OS</span> à auditer. Le développeur peut aussi utiliser ce guide pour vérifier l'accessibilité de son code.
+This guide is intended for auditors who want to check the accessibility of a native mobile application. It is not necessary to have access to the source code, the only requirement is that the app is installed on the target device, for the various tested OS. Developers can also use this guide to check the accessibility of their app.
 
-Le guide a pour but de couvrir les points importants et erreurs récurrentes dans les applications mobiles. Il n'est pas exhaustif, car l'accessibilité sur les supports tactiles est en perpétuelle évolution et n'est pas assez mature. Par défaut, la majeur partie des critères du RGAA 3 s'appliquent, il est nécessaire d'adapter les spécifications techniques (Html/CSS/Js) pour les transposer au natif.
+The guide aims to cover important issues and recurring errors in mobile applications. It is not exhaustive, because accessibility on tactile/mobile devices is in continuous evolution, and is not mature enough yet. By default, the majority of the criteria of the RGAA 3 apply, however it is necessary to adapt the technical specifications (Html/CSS/JS) to transpose them to native apps.
 
 
-## I. Présentation des outils d’accessibilité
+## I. Presentation of accessibility tools
 
-Les personnes en situation de handicap rencontrent des difficultés dans l'accès à l'information (applications, sites <span lang="en">Web</span>, etc.). Pour y pallier, elles utilisent des "technologies d'assistance". On peut distinguer deux grandes catégories de technologies d'assistance&nbsp;: logicielles et matérielles.
+People with disabilities face difficulties in accessing information (applications, websites, etc.). To compensate, they use "assistive technologies". There are two main categories of assistive technologies: software and hardware.
 
 
-### Les logiciels
+### Software
 
-Des logiciels permettent de rendre accessibles les applications mobiles aux personnes en situation de handicap, notamment aux déficients visuels (non et mal-voyants). Ceux-ci sont soit disponibles "par défaut" dans le système d'exploitation et peuvent souvent être activés simplement via les paramètres d'accessibilité, soit installables séparément.
+Some software applications can make mobile applications accessible to people with disabilities, especially people with visual impairments (blind or with low vision). These are either available "by default" in the operating system (and can often be activated simply via the accessibility settings), or they can be installed separately.
 
-On trouve&nbsp;:
+Main categories:
 
-* Les outils d'agrandissement et de modification de l'apparence des caractères&nbsp;: ils permettent à l'utilisateur malvoyant d'agrandir le contenu de l'écran afin d'en prendre connaissance plus facilement.
+* Tools to enlarge and modify the appearance of characters: they allow the visually impaired user to enlarge the contents of the screen for easier access.
 
-  * Sous Android, un certain nombre de paramètres sont disponibles (menu **Paramètres > Accessibilité**)&nbsp;:
+  * On Android, a number of settings are available (menu **Settings > Accessibility**):
 
-    * Gestes d'agrandissement&nbsp;: permet de définir de nouveaux gestes permettant à l'utilisateur de modifier la taille des éléments d'interface
-    * Grands caractères
-    * Texte en contraste élevé
-    * Inversion des couleurs
-    * Correction des couleurs
+    * Magnification gestures: allows you to define new gestures allowing the user to modify the size of the interface elements
+    * Large print
+    * Text in high contrast
+    * Invert colors
+    * Color Correction
 
-  * Pour IOS, les paramètres d'accessibilité permettent de&nbsp;:
-    * Activer le zoom
-    * Inverser les couleurs
-    * Obtenir un affichage en niveaux de gris
-    * Afficher des polices plus grandes par défaut
-    * Augmenter le contraste
+  * For iOS, the accessibility settings allow to:
+    * Enable Zoom
+    * Invert colors
+    * Get grayscale display
+    * Display larger fonts by default
+    * Increase contrast
 
-* Les lecteurs d'écran&nbsp;: ces applications permettent aux utilisateurs non et malvoyants d'accéder au contenu affiché à l'écran. Le lecteur d'écran pilote une synthèse vocale et/ou un périphérique externe tel qu'un afficheur braille (voir [Le matériel](#le-mat%C3%A9riel)). Ces logiciels remplissent plusieurs fonctions&nbsp;:
-  * Ils permettent à l'utilisateur de parcourir l'écran tactile afin d'en connaître le contenu
-  * Ils redéfinissent un certain nombre de gestes pour adapter la navigation dans les interfaces aux utilisateurs déficients visuels
-  * Ils vocalisent le contenu&nbsp;: ils sont en mesure de piloter des programmes de synthèse vocale (intégrés au système ou ajoutés par l'utilisateur)
-  * Ils pilotent un afficheur braille, un dispositif externe qui sert à restituer le contenu affiché à l'écran et qui peut aussi jouer le rôle d'un périphérique de saisie si l'appareil braille dispose d'un clavier
-  * Ils ajoutent un certain nombre de "métaphores sonores" qui sont des sons spécifiques émis pour permettre à l'utilisateur d'identifier plus facilement le contexte dans lequel il se trouve (zone de saisie, début ou fin de liste d'éléments, etc.)
-  * Ils proposent des assistances à la saisie
+* Screen Readers: These applications allow users to access the content displayed on the screen, in a non-visual way. The screen reader drives a speech synthesizer and/or external device such as a Braille display (see [Hardware](#hardware)). These apps fulfill several functions:
+  * They allow the user to explore the interface by touch, to discover its contents
+  * They redefine a number of gestures to adapt navigation in interfaces for users with visual impairments
+  * They vocalize the content: they are able to control voice synthesizing programs (integrated in the system or added by the user)
+  * They operate a Braille display, an external device which is used to display in Braille characters the contents on screen, and which can also act as an input device if it includes a keyboard
+  * They add a number of "audio cues" that are specific sounds emitted to allow the user to more easily identify the current context (input area, beginning or end of a list of items, etc.)
+  * They offer input assistance
 
-Pour Android, le logiciel <span lang="en">TalkBack</span> est un lecteur d'écran livré par défaut (depuis la version 4.0 du système) activable dans les paramètres d'accessibilité. Le système Android intègre un logiciel de synthèse vocale supportant plusieurs langues qui peut être piloté par <span lang="en">TalkBack</span>. Les utilisateurs d'afficheurs braille doivent activer le logiciel BrailleBack pour piloter leur appareil.
+For Android, TalkBack is a screen reader provided as default (since version 4.0), that can be activated in the accessibility settings. The Android system integrates multi-language speech synthesis software that can be controlled by TalkBack. Braille displays users must activate the BrailleBack software to control their device.
 
-Les utilisateurs d'<span lang="en">iOS</span> peuvent activer le logiciel <span lang="en">VoiceOver</span> dans les paramètres d'accessibilité. Il s'agit d'un lecteur d'écran capable de piloter une synthèse vocale (également disponible par défaut avec <span lang="en">iOS</span>) et un afficheur braille.
+iOS users can activate VoiceOver in the accessibility settings. This screen reader is able to drive a speech synthesizer (also available by default with iOS) and a braille display.
 
-* Les outils de reconnaissance vocale (comme Siri pour <span lang="en">iOS</span>) permettent aux utilisateurs qui ont des difficultés à utiliser les interfaces tactiles d'effectuer plus rapidement certaines actions simples (appeler un contact, entrer du texte dans une zone de saisie, etc.).
+* Speech recognition software (like Siri for iOS) allow users who have difficulty using touch interfaces to perform some simple actions more quickly (call a contact, enter text in an input box, etc.).
 
-### Le matériel
+### Hardware
 
-L'utilisation des interfaces tactiles peut être facilitée grâce à certains périphériques, souvent connectés via Bluetooth.
+The use of touch interfaces can be facilitated by some devices, often connected via Bluetooth.
 
-On peut citer&nbsp;:
+We can mention:
 
-* Clavier&nbsp;: permet aux utilisateurs de naviguer à l'intérieur des interfaces sans utiliser la gestuelle définie par le système&nbsp;; facilite les opérations de saisie.
-* Afficheur braille&nbsp;: ce dispositif est utilisé par les personnes aveugles, souvent en complément de la synthèse vocale. Un afficheur braille est constitué d'un ensemble de "picots" qui montent et descendent afin de permettre de produire du braille de manière dynamique. Selon, les modèles, il peut afficher entre 12 et 80 caractères. Il dispose de touches de navigation, et pour certains, d'un clavier braille ou "ordinaire" qui permet de saisir du texte.
-* Smartphones adaptés aux personnes en situation de handicap&nbsp;: des fabricants ont créé des modèles adaptés aux personnes en situation de handicap (écran de taille plus importante, présence de touches pour faciliter la navigation, etc.).
+* Keyboard: allows users to navigate within interfaces without using the system-defined gestures. Facilitates input operations.
+* Braille display: this device is mostly used by blind people, often in addition to voice synthesis. A braille display consists of a set of round-tipped pins raised or lowered to form Braille characters dynamically. Depending on the model, it can display between 12 and 80 characters. It has navigation keys, and, for some, a braille or regular keyboard that enables the user to enter text.
+* Smartphones adapted to people with disabilities: Manufacturers have created models adapted to people with disabilities (larger screen, presence of keys to facilitate navigation, etc.).
 
-## II. Introduction au lecteur d’écran
+## II. Introduction to screen readers
 
-### Présentation TalkBack et VoiceOver
+### Presentation of TalkBack and VoiceOver
 
-<span lang="en">TalkBack</span> et <span lang="en">VoiceOver</span> sont des lecteurs d'écran qui restituent vocalement l'application mobile et vos actions sur celle-ci.
-Un lecteur d'écran pour mobile permet de naviguer dans l'application de deux façons&nbsp;:
-* En explorant au toucher, le lecteur d'écran restitue vocalement les éléments sous le doigt.
-* En utilisant les gestes de navigation, en balayant vers la droite ou vers la gauche, le focus va se déplacer vers l'élément suivant ou précédent.
+ TalkBack and VoiceOver are screen readers able to render the mobile application interface and the user's interactions with it.
+A mobile screen reader allows you to navigate in the application in two ways:
+* By exploring by touch, the screen reader rendering the elements under the finger.
+* Using navigation gestures, sweeping to the right or to the left, the focus will move to the next or previous item.
 
-#### Activer TalkBack sous Android
+#### Turn on TalkBack on Android
 
-Avant d'utiliser <span lang="en">TalkBack</span>, il nécessaire d'activer plusieurs options dans le menu **Paramètres > Accessibilité > Talkback > Paramètres**&nbsp;:
- 1. Activez l'option **Explorer au toucher**
- 2. Cochez l'option **Faire défiler les listes automatiquement**
+Before using TalkBack, you need to activate several options in the menu **Settings > Accessibility > TalkBack > Settings**:
+ 1. Enable the **Explore by touch** option
+ 2. Select the **Automatically scroll lists** option
 
-Pour activer <span lang="en">TalkBack</span>, procédez comme suit&nbsp;:
+To turn on TalkBack, do the following: 
 
- 1. Sélectionnez **Paramètres > Accessibilité**.
- 2. Suivez les étapes ci-dessous selon votre version d'<span lang="en">Android</span>. [Découvrez comment vérifier la version de votre appareil Android](https://support.google.com/nexus/answer/4457705).
-   * <span lang="en">Android</span> 4.1 ou version ultérieure&nbsp;: sélectionnez **<span lang="en">TalkBack</span>**, puis déplacez le curseur de <span lang="en">TalkBack</span> en position activée.
-   * <span lang="en">Android</span> 4.0&nbsp;: sélectionnez **<span lang="en">TalkBack</span>**, puis déplacez le curseur de <span lang="en">TalkBack</span> en position activée. Revenez ensuite à l'écran précédent, puis activez l'option Explorer au toucher.
-   * <span lang="en">Android</span> 3.2 ou version antérieure&nbsp;: cochez les cases **Accessibilité** et **<span lang="en">TalkBack</span>**.
- 3. L'écran de confirmation vous présente une liste d'autorisations concernant l'exécution d'actions précises, qui vous permettront d'obtenir des commentaires audio utiles. Appuyez sur **OK** pour confirmer que vous autorisez ces actions et pour commencer à utiliser <span lang="en">TalkBack</span>.
+ 1. Select **Settings > Accessibility**.
+ 2. Follow the steps below, depending on your version of Android. [Learn how to check your Android device version](https://support.google.com/nexus/answer/4457705).
+   * Android 4.1 or later: select **TalkBack**, then switch the TalkBack button on.
+   * Android 4.0: select **TalkBack**, then switch the TalkBack toggle button on. Then go back to the previous screen, and then select "Explore by touch".
+   * Android 3.2 or earlier: Check the **Accessibility** and **TalkBack** boxes.
+ 3. The confirmation screen will show a list of permissions for performing specific actions, which will allow to get useful audio feedback. Tap **OK** to confirm that you allow these actions, and to start using TalkBack.
 
-Source&nbsp;:
- * [Activer TalkBack](https://support.google.com/accessibility/android/answer/6007100?hl=fr)
- * [<span lang="en">Accessibility testing with Android Talkback</span> (en anglais)](https://www.paciellogroup.com/blog/2015/10/accessibility-testing-with-android-talkback/)
+Source:
+ * [Turn on TalkBack](https://support.google.com/accessibility/android/answer/6007100?hl=en)
+ * [Accessibility testing with Android TalkBack](https://www.paciellogroup.com/blog/2015/10/accessibility-testing-with-android-talkback)
 
-#### Activer VoiceOver sous iOS
+#### Turn on VoiceOver on iOS
 
- 1. Sélectionnez **Réglages > Général > Accessibilité > Raccourci d’accessibilité**
- 2. Sélectionnez **<span lang="en">VoiceOver</span>**
- 3. Vous pouvez maintenant, à tout moment, activer et désactiver <span lang="en">VoiceOver</span> en triple cliquant sur le bouton **<span lang="en">Home</span>**.
+ 1. Select **Settings > General > Accessibility > Accessibility Shortcut**
+ 2. Select **VoiceOver**
+ 3. You can now activate and deactivate VoiceOver at any time by triple-clicking the **Home** button.
 
-### Gestuelle de base pour réaliser un audit
+### Basic gestures to perform an audit
 
-Les gestes de base permettent de naviguer dans l'application. Le lecteur d'écran lit les éléments en surbrillance. Les gestes permettent de déplacer le <span lang="en">focus</span> et d'interagir avec les éléments, un peu à la manière de la navigation clavier sur ordinateur.
+Basic gestures allow you to navigate in the application. The screen reader reads the highlighted items. Gestures allow you to move the focus and interact with the elements, much like keyboard navigation on a computer.
 
-#### Déplacer le focus sur l'élément suivant
+#### Move the focus to the next item
 
-Pour déplacer le <span lang="en">focus</span> sur l'élément suivant, il faut balayer l'écran vers la droite, c'est l'équivalent de la touche `TAB` sur PC.
+To move the focus to the next item, swipe to the right, which is equivalent to the `TAB` key on a PC.
 
-<img src="img/swipe_droite.png" width="300" height="300" alt="Balayer l'écran vers droite">
+<img src="img/swipe_droite.png" width="300" height="300" alt="Swipe to the right." />
 
-#### Déplacer le focus sur l'élément précédent
+#### Move the focus to the previous item
 
-Pour déplacer le <span lang="en">focus</span> sur l'élément précédent, il faut balayer l'écran vers la gauche, c'est l'équivalent de la touche `SHIFT+TAB` sur PC.
+To move the focus to the previous item, swipe to the left, which is equivalent to the `SHIFT + TAB` key on the PC.
 
-<img src="img/swipe_gauche.png" width="300" height="300" alt="Balayer l'écran vers gauche">
+<img src="img/swipe_gauche.png" width="300" height="300" alt="Swipe to the left." />
 
-#### Sélectionner l'élément mis en surbrillance
+#### Select the highlighted item
 
-Pour sélectionner l'élément mis en surbrillance, il faut appuyer deux fois, c'est l'équivalent de la touche `Entrée` sur PC.
+To select the highlighted item, tap twice, this is equivalent to the `Enter` key on the PC.
 
-<img src="img/double_tap.png" width="300" height="300" alt="Double taper sur l'écran">
+<img src="img/double_tap.png" width="300" height="300" alt="Double tap on screen." />
 
-#### Scroller dans l'application
+#### Scroll in the application
 
-Pour scroller dans le contenu de l'application, il existe deux mouvements suivant l'utilisation d'<span lang="en">Android</span> ou <span lang="en">iOS</span>.
+To scroll through the content of the application, there are two gestures, depending on whether you use Android or iOS.
 
-##### Scroller avec Android
+##### Scroll with Android
 
-Pour scroller avec <span lang="en">Android</span>, il faut utiliser deux doigts et glisser dans la direction désirée.
+To scroll with Android, use two fingers and drag in the desired direction.
 
-<img src="img/scroll_2doigts.png" width="300" height="300" alt="Glisser deux doigts dans la direction désirée">
+<img src="img/scroll_2doigts.png" width="300" height="300" alt="Drag with two fingers in the desired direction.">
 
-##### Scroller avec iOS
+##### Scroll with iOS
 
-Pour scroller avec <span lang="en">iOS</span>, il faut utiliser trois doigts et glisser dans la direction désirée.
+To scroll with iOS, use three fingers and drag in the desired direction.
 
-<img src="img/scroll_3doigts.png" width="300" height="300" alt="Glisser trois doigts dans la direction désirée">
+<img src="img/scroll_3doigts.png" width="300" height="300" alt="Drag with three fingers in the desired direction." />
 
-### Gestes avancés
+### Advanced Gestures
 
-[Gestes avancés sous Android](https://support.google.com/accessibility/android/answer/6151827?hl=fr&ref_topic=3529932)
+[Advanced Android Gestures](https://support.google.com/accessibility/android/answer/6151827?hl=en&ref_topic=3529932)
 
-[Gestes avancés sous iPhone (en anglais)](https://developer.apple.com/library/ios/technotes/TestingAccessibilityOfiOSApps/TestAccessibilityonYourDevicewithVoiceOver/TestAccessibilityonYourDevicewithVoiceOver.html)
+[Advanced iOS Gestures](https://developer.apple.com/library/content/technotes/TestingAccessibilityOfiOSApps/TestAccessibilityonYourDevicewithVoiceOver/TestAccessibilityonYourDevicewithVoiceOver.html)
 
 
 
 
-## III. Outils de test pour l’auditeur
+## III. Testing tools for auditors
 
 
-### Prendre une capture d'écran de l'application
+### Take a screenshot of the application
 
-Lors de l'audit, il est nécessaire de prendre des captures d'écrans pour pouvoir tester les contrastes. Ces captures pourront alimenter le rapport de l'audit.
+During the audit, it is necessary to take screenshots to be able to test the contrasts. These screenshots can then be analyzed with a desktop application, and added to the audit report.
 
-Pour prendre une capture d'écran sous <span lang="en">iOS</span>&nbsp;:
- * Appuyer en même temps, sur les boutons <span lang="en">Home</span> et <span lang="en">Power</span>.
+To take a screenshot with iOS:
+ * Press the Home and Power buttons simultaneously.
 
-Pour prendre une capture d'écran sous <span lang="en">Android</span> > 4.0&nbsp;:
- * Maintenir appuyé en même temps pendant quelques secondes, les boutons Volume bas et Power.
+To take a screenshot with Android > 4.0:
+ * Hold down the Volume Down and Power buttons simultaneously for a few seconds.
 
-### Activer le mode grands caractères
+### Enable Large Characters mode
 
-Pour vérifier l'accessibilité de l'application mobile, il est nécessaire de modifier la taille de police lors des test.
-Voici la procédure selon l'<span lang="en">OS</span>.
+To check the accessibility of the mobile application, it is necessary to change the font size during testing.
+Here is the procedure for each OS.
 
 #### Android
 
-Pour modifier la taille des caractères sous <span lang="en">Android</span>&nbsp;:
- * Dans **Paramètres > Affichage** cliquez sur **Taille de police**.
- * Sélectionnez la taille de police **Très grande**.
+To change the font size with Android:
+ * In **Settings > Display**, tap **Font Size**.
+ * Select the font size **Very large**.
 
 #### iOS
 
-Pour modifier la taille de la police sous <span lang="en">iOS</span>&nbsp;:
- * Sous <span lang="en">iOS</span> 8, rendez-vous dans **Réglages > Affichage et luminosité > Taille du texte**.
- * Sous <span lang="en">iOS</span> 7, rendez-vous dans **Réglages > Général > Taille du texte**.
- * Faites glisser le curseur afin d’augmenter ou de réduire la taille de la police.
+To change the font size with iOS:
+ * With iOS 8 and later, go to **Settings > Display & Brightness > Text Size**.
+ * With iOS 7, go to **Settings > General > Text Size**.
+ * Drag the slider to increase or decrease the font size.
 
-Source&nbsp;: [Modification de la taille de la police](https://support.apple.com/fr-fr/HT202828)
+Source: [Appearance of texts and icons](https://support.apple.com/en-us/HT202613#text)
 
-### Afficher la sortie vocale sous Android
+### Display speech output on Android
 
-L'auditeur peut faciliter les tests avec le lecteur d'écran en affichant le texte prononcé par la synthèse vocale sous forme de bulle. Elle simplifie aussi les rapports d'audit pour alimenter les impressions d'écran en montrant le focus et la sortie vocale associés à l'écran.
+Tests with the screen reader can be made easier by displaying the text spoken by speech synthesis, as a tooltip. It is also easier to provide screenshots in audit reports, where the focus and associated voice output are displayed.
 
-Pour activer l'option, il faut aller dans **Paramètres > Accessibilité > Talkback > Paramètres**, puis dans la section **paramètres du développeur**, cliquez sur **Activer la sortie vocale**.
+To activate the option, go to **Settings > Accessibility > TalkBack > Settings**, and then under **Developer settings**, tap **Display speech output**.
 
-<img src="img/afficher-sortie-vocale.png" width="300" height="500" alt="Capture de l'écran des paramètres d'android pour afficher la sortie vocale">
+<img src="img/display-speech-output.png" width="720" height="1280" alt="Screenshot: Android settings for speech output display."/>
 
-### Afficher les contours sous Android
+### Display layout bounds on Android
 
-Pour les utilisateurs d'<span lang="en">Android</span> 4.2 et supérieur, il faut débloquer le mode développeur en allant dans **Paramètres > À propos du téléphone** et taper 7 fois sur l'item **Numéro de build**, puis revenir à l'écran précédent.
+For Android 4.2+ users, you must unlock the developer options by going to **Settings > About Phone** and tapping 7 times on the item **Build number**, then return to the previous screen.
 
-Ensuite, aller dans **Paramètres > Options pour les développeurs** et dans la section **Tracé**, cliquez sur l'option **Afficher les contours**.
+Then go to **Settings > Developer Options** and under **Drawing**, tap the **Display layout bounds** option.
 
-Cette option peut se révéler utile pour auditer les problématiques de dimensions sous <span lang="en">Android</span>. Notamment pour le [critère 14.1](https://github.com/DISIC/referentiel-mobile-tactile/blob/master/refentiel-mobile-tactile-liste-criteres.md#141-chaque-zone-sensible-a-t-elle-une-taille-suffisante) du RGAA.
+This option may be useful to check dimensions of touch targets in Android. Notably for [criterion 14.1 of the RGAA mobile/touch extension](https://github.com/DISIC/referentiel-mobile-tactile/blob/en/mobile-touch-guidelines-criteria.md#141-does-each-touch-target-have-a-sufficient-size).
 
-<img src="img/option-contours.png" width="300" height="500" alt="Capture de l'écran des paramètres d'android pour afficher les contours">
+<img src="img/display-layout-bounds.png" width="720" height="1280" alt="Screenshot: Android settings for layout bounds display."/>
 
-### Utiliser l'inspecteur d'accessibilité sous iOS
+### Using the Accessibility Inspector on iOS
 
-L'inspecteur est activable seulement en ayant accès au code source de l'application.
+The Inspector can only be activated by accessing the source code of the application.
 
-Pour activer cette option&nbsp;:
- * Importer le projet dans xCode
- * Lancer l'application dans un simulateur <span lang="en">iOS</span>
- * Dans l'environnement simulé, cliquez sur le bouton Home
- * Allez dans **Paramètres > Général > Accessibilité**
- * Puis activez l'inspecteur d'accessibilité
+To enable this option:
+ * Import the project into xCode
+ * Launch the application in an iOS simulator 
+ * In the simulated environment, click the Home button
+ * Go to **Settings > General > Accessibility**
+ * Then activate the Accessibility Inspector
 
-Utilisation de l'inspecteur d'accessibilité
- * Il est possible d'activer et désactiver l'inspecteur en cliquant sur le bouton de fermeture de la modale se situant en haut à gauche.
- * Lorsque l'inspecteur est activé, il est possible de connaître les propriétés d'accessibilité d'un élément en cliquant dessus.
+Using the Accessibility Inspector
+ * It is possible to activate and deactivate the inspector by tapping on the closing button of the modal dialog, located at the top left.
+ * When the Inspector is enabled, it is possible to display the accessibility properties of an item by clicking on it.
 
-De cette manière, il est possible de faire des captures d'écran plus détaillées sur les éléments de l'application.
+It is a convenient way to make  detailed screenshots of the elements of the application.
 
-Dans l'exemple ci-dessous, on peut mettre en évidence le label (<span lang="en">General</span>) et le rôle (<span lang="en">Button</span>) d'un élément lors d'une capture d'écran donnant ainsi plus d'informations au développeur pour la correction.
+In the example below, the label ("General") and the traits, or role ("Button"), of an item are displayed, giving more information to the developer for the correction.
 
-<img src="img/ios-accessibility-inspector.png" width="300" height="534" alt="Capture de l'écran des paramètres de l'inspecteur d'accessiblité pour le simulateur.">
+<img src="img/ios-accessibility-inspector.png" width="300" height="534" alt="Screenshot: settings of the Accessibility Inspector for the iOS simulator."/>
 
-Source&nbsp;: [<span lang="en">Debug Accessibility in iOS Simulator with the Accessibility Inspector</span> (en anglais)](https://developer.apple.com/library/ios/technotes/TestingAccessibilityOfiOSApps/TestAccessibilityiniOSSimulatorwithAccessibilityInspector/TestAccessibilityiniOSSimulatorwithAccessibilityInspector.html#//apple_ref/doc/uid/TP40012619-CH4-SW1)
+Source: [Debug Accessibility in iOS Simulator with the Accessibility Inspector](https://developer.apple.com/library/content/technotes/TestingAccessibilityOfiOSApps/TestAccessibilityiniOSSimulatorwithAccessibilityInspector/TestAccessibilityiniOSSimulatorwithAccessibilityInspector.html#//apple_ref/doc/uid/TP40012619-CH4-SW1)
 
 
 
-## IV. Thèmes
+## IV. Topics
 
-### Taille des éléments de l'interface
+### User interface elements size
 
-#### Taille des zones sensibles
+#### Touch target size
 
-S'assurer que les zones sensibles ont une taille suffisante pour les lire correctement et être activées facilement avec un doigt.
-La taille est importante pour les non-voyants explorant au toucher, mais surtout pour les personnes ayant des troubles des mouvements ou de tremblements.
-Il est recommandé d'utiliser une hauteur et largeur supérieur à 9mm dans les critères [RGAA 3 pour le mobile](https://github.com/DISIC/referentiel-mobile-tactile/blob/master/refentiel-mobile-tactile-liste-criteres.md#141-chaque-zone-sensible-a-t-elle-une-taille-suffisante).
+Make sure that the touch targets are of sufficient size to read them correctly and be activated easily with a finger.
+Touch target size is important for users exploring by touch, but also for people with fine motion disorders or tremors.
+It is recommended to use a [height and width greater than 9 mm in the RGAA 3 guidelines for mobile/touch devices](https://github.com/DISIC/referentiel-mobile-tactile/blob/en/mobile-touch-guidelines-criteria.md#141-does-each-touch-target-have-a-sufficient-size).
 
-<span lang="en">Android</span> dispose d'une option permettant d'afficher les contours des éléments. Il vous sera nécessaire de déterminer parmis ces éléments lesquel sont des zones sensible au clique.
-L'affichage des contours permet de mesurer précisément la taille de la surface sensible qui ne sont parfois pas correctement délimitée dans l'application.
-
-##### Test
-
-1. [Android] [Activer l'affichage des contours](#afficher-les-contours-sous-android)
-2. Ouvrir l'application
-3. Identifier les zones sensibles
-4. Mesurer leurs tailles avec une règle
-5. Résultat&nbsp;: Pour chaque zone, la largeur et la hauteur font 9mm au moins.
-
-NB&nbsp;: Sous <span lang="en">iOS</span>, il n'y a pas d'option pour afficher les contours. L'utilisation du lecteur d'écran permet de signaler la prise de focus est ainsi mesurer plus facilement la taille de la zone sensible.
-
-##### Exemple
-
-L'exemple ci-dessous comporte plusieurs erreurs en surbrillance, ces zones sensibles ont une taille inféreure à 9mm. L'affichage des contours permet ici de se rendre compte de la taille effective des boutons "ABONNEMENTS" et "ABONNÉS" qui ne comporte pas de délimitation dans l'application.
-
-<img src="img/taille-suffisante.jpg" width="300" height="500" alt="capture de l'écran Twitter avec l'affichage des contours">
-<img src="img/taille-suffisante-2.png" width="300" height="500" alt="capture de l'écran Twitter avec l'affichage des contours">
-
-##### Correspondances
-
-[Critère 14.1 Chaque zone sensible a-t-elle une taille suffisante&nbsp;?](https://github.com/DISIC/referentiel-mobile-tactile/blob/master/refentiel-mobile-tactile-liste-criteres.md#141-chaque-zone-sensible-a-t-elle-une-taille-suffisante)
-
-#### Marge extérieure suffisante
-
-S'assurer que les zones sensibles ont une marge extérieure suffisante pour activer correctement la bonne zone avec un doigt.
+ Android has an option to display the boundaries of items. It will be necessary to determine among these elements which areas are touchable.
+The display of the boundaries makes it possible to precisely measure the size of the touch targets, which are sometimes not correctly delimited in the application.
 
 ##### Test
 
-Les tests de marge peuvent se révéler difficiles à réaliser, spécialement sous <span lang="en">iOS</span> qui ne permet pas d'afficher clairement ce détail.
+1. [Android] [Display layout bounds](#display-layout-bounds-on-android)
+2. Start the application
+3. Identify touch targets
+4. Measure their sizes with a ruler
+5. Result: For each target, the width and height are at least 9mm.
 
-1. [Android] [Activer l'affichage des contours](#afficher-les-contours-sous-android)
-2. Ouvrir l'application
-3. Identifier les zones sensibles
-4. Vérifier qu'il y a une séparation visuelle entre deux éléments ou qu'il y a un espace inactif entre chaque zone sensible.
-5. Résultat&nbsp;: Toutes les zones sensibles vérifient l'une des deux conditions.
+Note: with iOS, there is no option to display the outlines. However, when the screen reader is on, the boundaries of the currently focused item focus are displayed, making it possible to measure the size of the touch target.
 
+##### Example
 
-##### Exemple
+The example below shows several errors, the highlighted (bolder outline) touch targets have one of their dimensions, at least, smaller than 9 mm. The display of layout bounds here makes it possible to visualize the actual size of the "FOLLOWING" and "FOLLOWERS" buttons, which by design do not have visible delimitations.
 
-L'exemple ci-dessous ne comporte pas d'erreur. Il y a bien une marge visible dans la liste des éléments. Sur la version avec les contours, on peut aussi vérifier qu'il y a une marge de 1 pixel entre chaque élément.
+<img src="img/sufficient-size.png" width="720" height="1280" alt="Screenshot of the Twitter app, with layout bounds displayed."/>
 
-<img src="img/marge-suffisante2.png" width="300" height="500" alt="capture de l'écran Twitter sans l'affichage des contours">
-<img src="img/marge-suffisante.png" width="300" height="500" alt="capture de l'écran Twitter avec l'affichage des contours">
+<img src="img/sufficient-size-2.png" width="720" height="1280" alt="Screenshot of the Twitter app, with layout bounds displayed, and some too small touch targets highlighted."/>
 
+##### Matching criteria
 
-##### Correspondances
+[Criterion 14.1 Does each touch target have a sufficient size](https://github.com/DISIC/referentiel-mobile-tactile/blob/en/mobile-touch-guidelines-criteria.md#141-does-each-touch-target-have-a-sufficient-size)
 
-[Critère 14.1 Chaque zone sensible a-t-elle une taille suffisante&nbsp;?](https://github.com/DISIC/referentiel-mobile-tactile/blob/master/refentiel-mobile-tactile-liste-criteres.md#141-chaque-zone-sensible-a-t-elle-une-taille-suffisante)
+[Touch target size](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/design/touch-target-size)
 
-#### Taille du texte
+#### Sufficient outside margin
 
-Pour faciliter la lecture, la taille du texte peut être augmentée via les options d'accessibilité. La taille du texte ne doit pas être codée en taille fixe mais en taille relative.
+Make sure that the touch targets have sufficient outside margin to avoid misplacements when touching with a finger.
 
 ##### Test
 
-1. Ouvrir l'application.
-2. Faire une impression d'écran.
-3. [Activer l'option **Grands caractères**](#activer-le-mode-grands-caract%C3%A8res).
-4. Vérifier la taille du texte après activation de l'option.
-5. Résultat&nbsp;: Pour chaque contenu la taille de texte a augmenté, et la lecture n'est pas altérée (i.e. le texte n'est pas tronqué sauf si c'est le comportement attendu et il ne déborde pas).
+Measurement of margins can be difficult, especially with iOS which does not provide a means to display this information.
+
+1. [Android] [Display layout bounds](#display-layout-bounds-on-android)
+2. Start the application
+3. Identify touch targets
+4. Verify that there is a visual separation between two elements, or that there is an inactive space between adjacent touch targets.
+5. Result: All touch targets verify at least one of the two conditions.
 
 
-##### Correspondances
+##### Example
 
-[Critère 10.4 [AA] Dans chaque page Web, le texte reste-t-il lisible lorsque la taille des caractères est augmentée jusqu'à 200%, au moins&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-10-4)
+The example below shows a conforming design. There is a visible margin in the list of items. On the screenshot with the layout bounds, a 1 pixel-margin between each element can be seen.
 
-[<span lang="en">Zoom</span> (en anglais)](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/design/zoom)
+<img src="img/sufficient-margin.png" width="720" height="1280" alt="Screenshot of the Twitter app."/>
+
+<img src="img/sufficient-margin-2.png" width="720" height="1280" alt="Screenshot of the Twitter app, with layout bounds displayed, showing sufficient spacing between elements."/>
+
+
+##### Matching criteria
+
+[Criterion 14.1 Does each touch target have a sufficient size](https://github.com/DISIC/referentiel-mobile-tactile/blob/en/mobile-touch-guidelines-criteria.md#141-does-each-touch-target-have-a-sufficient-size)
+
+[Spacing](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/design/spacing)
+
+#### Text size
+
+For improved legibility, text size can be increased via accessibility settings. The size of the text should not be coded in fixed size but in relative size.
+
+##### Test
+
+1. Start the application.
+2. Take a screenshot.
+3. [Enable the **Large Characters** Mode](#enable-large-characters-mode).
+4. Check the text size after activating the option; compare with the screenshot.
+5. Result: For each content the text size has increased, and content remains legible (i.e. the text is not truncated or hidden, unless it is the expected behavior; and it does not overflow).
+
+
+##### Matching criteria
+
+[Criterion 14.1 Does each touch target have a sufficient size]
+
+[Content resizing](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/design/content-resizing)
 
 ### Images
 
-#### Image porteuse d'information
+#### Image conveying information
 
-Une alternative doit être disponible pour chaque [image porteuse d'information](http://references.modernisation.gouv.fr/referentiel-technique-0#title-image-porteuse-dinformation). Lors de la navigation, un non-voyant aura une information sur le contenu de l'image.
-
-##### Test
-
-1. Activer le lecteur d'écran
-2. Ouvrir l'application
-3. Identifier les images porteuses d'information et prendre le <span lang="en">focus</span>
-4. Résultat&nbsp;: Pour chaque image porteuse d'information, une alternative est énoncée par le lecteur d'écran.
-
-#### Boutons images
-
-Une alternative doit être disponible pour les boutons icônes ou les boutons images.
+An alternative must be available for each [image conveying information](https://disic.github.io/rgaa_referentiel_en/glossary.html#mImgInfo). During navigation, a person using a screen reader will have information about the content of the image.
 
 ##### Test
 
-1. Activer le lecteur d'écran
-2. Ouvrir l'application
-3. Identifier les boutons image et prendre le <span lang="en">focus</span>
-4. Résultat&nbsp;: Pour chaque bouton images une description permet d'en comprendre la fonction et la destination.
+1. Activate the screen reader
+2. Start the application
+3. Identify images conveying information, and set the focus on them
+4. Result: For each image conveying information, an alternative is read by the screen reader.
 
-##### Exemple
+#### Image buttons
 
-Dans l'exemple de l'application de démonstration <span lang="en">Android</span>, le bouton image comporte une erreur, en effet le bouton de suppression n'a pas d'alternative permettant de comprendre sa fonction. Le lecteur restitue Bouton "67" sans libellé.
-
-<img src="img/bouton-image.png" width="300" height="500" alt="capture d'un bouton image sans libellé">
-
-### Couleurs
-
-#### Contraste
-
-Il est important de vérifier que le contraste sur mobile est supérieur à 4,5. Il n'existe pas d'application mobile pour vérifier directement ce critère sur le mobile. Il est nécessaire de faire une impression d'écran et de l'envoyer sur un ordinateur pour vérifier les contrastes.
+An alternative must be available for icon buttons or image buttons.
 
 ##### Test
 
-1. Ouvrir l'application
-2. Prendre une [capture d'écran](#prendre-une-capture-d-cran-de-l-application)
-3. Envoyer la capture par courriel vers un PC.
-4. Ouvrir l'image et utiliser la pipette de [<span lang="en">Colour Contrast Analyser</span> (en anglais)](https://www.paciellogroup.com/resources/contrastanalyser/).
-5. Résultat&nbsp;: Vérifier que le contraste est de 4,5:1 au moins pour tout les textes.
+1. Activate the screen reader
+2. Start the application
+3. Identify image buttons, and set the focus on them 
+4. Result: For each image button, a description allows to understand its function and purpose.
 
-##### Correspondances
+##### Example
 
-[Critère 3.3&nbsp;: Contraste entre la couleur du texte et la couleur de son arrière-plan est-il suffisamment élevé](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-3-3)
+In the following screenshot, the TalkBack screen reader has been activated, with the "Display speech output" option on. The image button that has focus has no alternative. The screen reader returns "Button 66. Unlabelled".
 
-#### Information donnée par la couleur
+<img src="img/bouton-image.png" width="300" height="500" alt="Screenshot: app with an image button with no label."/>
 
-Vérifier que l'information n'est pas donnée uniquement par la couleur.
+### Colors
+
+#### Contrast
+
+It is important to check that the mobile contrast is greater than 4.5. Google provides the [Accessibility Scanner app](https://support.google.com/accessibility/android/faq/6376582), but it requires Android 6.0 or above, and detects contrasts lower than 3.0 only. For other systems, there is no mobile application yet to verify this criterion directly on the mobile. It is necessary to take a screenshot and analyze it with a desktop software to check for contrasts.
 
 ##### Test
 
-1. Ouvrir l'application.
-2. Identifier tous les éléments utilisant de la couleur.
-3. Pour chaque élément, l'information ne doit pas être donnée uniquement par la couleur
-4. Résultat&nbsp;: Une information textuelle équivalente à celle donnée par la couleur est présente dans l'interface.
+1. Start the application
+2. [Take a screenshot of the application](#take-a-screenshot-of-the-application)
+3. Send the image to a desktop computer
+4. Display the image on the desktop computer and use a tool like [Colour Contrast Analyser](https://www.paciellogroup.com/resources/contrastanalyser/).
+5. Result: Check that the contrast is 4.5:1, at least, for all texts.
 
-##### Correspondances
+##### Matching criteria
 
-[Critère 3.1 [A] Dans chaque page Web, l'information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle respectée&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-3-1)
+[Criterion 3.3 [AA] On each Web page, is the contrast between the text and background colors sufficient (except in particular cases)?](https://disic.github.io/rgaa_referentiel_en/criteria.html#crit-3-3)
 
-[Critère 3.2 [A] Dans chaque page Web, l'information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle implémentée de façon pertinente&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-3-2)
+#### Information conveyed through color
 
-### Multimédia
+Verify that information is not conveyed through color only.
+
+##### Test
+
+1. Start the application.
+2. Identify all elements using color to convey information.
+3. For each of these elements, information is conveyed through another means
+4. Result: A textual information, equivalent to that conveyed through the color, is present in the interface.
+
+##### Matching criteria
+
+[Criterion 3.1 [A] On each Web page, information must not  be conveyed through color only. Has this rule been followed?](https://disic.github.io/rgaa_referentiel_en/criteria.html#crit-3-1)
+
+[Criterion 3.2 [A] On each Web page, information  must not be conveyed through color only. Has this rule been implemented in a relevant way?](https://disic.github.io/rgaa_referentiel_en/criteria.html#crit-3-2)
+
+### Multimedia
 
 #### Transcription
 
-Vérifier la présence d'un bouton ou d'un lien proche du média temporel pré-enregistré permettant l'affichage d'une alternative textuelle pertinente.
+Verify the presence of a button or a link near the prerecorded time-based media allowing the display of a relevant textual alternative.
 
 ##### Test
 
-1. Ouvrir l'application.
-2. Identifier chaque média temporel pré-enregistré véhiculant une information.
-3. Résultat&nbsp;: Pour chaque média restant, il existe un lien adjacente clairement identifiable vers une transcription textuelle pertinente.
+1. Start the application.
+2. Identify each prerecorded time-based media conveying information.
+3. Result: For each of these media, there is a clearly identifiable adjacent link or button, to display a relevant textual transcript.
 
-##### Correspondances
+##### Matching criteria
 
-[Critère 4.1 [A] Chaque média temporel pré-enregistré a-t-il, si nécessaire, une transcription textuelle ou une audio-description (hors cas particuliers)&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-4-1)
+[Criterion 4.1 [A] Does each prerecorded time-based media have a text transcript or an audio description if necessary (except in particular cases)?](https://disic.github.io/rgaa_referentiel_en/criteria.html#crit-4-1)
 
-[Critère 4.2 [A] Pour chaque média temporel pré-enregistré ayant une transcription textuelle ou une audio-description synchronisée, celles-ci sont-elles pertinentes (hors cas particuliers)&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-4-2)
+[Criterion 4.2 [A] For each prerecorded time-based media with a text transcript or a synchronized audio description, are these relevant (except in particular cases)?](https://disic.github.io/rgaa_referentiel_en/criteria.html#crit-4-2)
 
-#### Sous-titres
+#### Captions
 
-Les sous-titres permettent au sourd ou malentendant d'obtenir un équivalent du contenu audio.
-
-##### Test
-
-1. Ouvrir l'application.
-2. Identifier chaque média temporel pré-enregistré ayant des paroles, commentaires, ou dialogue.
-3. Résultat&nbsp;: Pour chaque média restant, il est possible de visualiser une version avec sous-titres pertinents.
-
-
-##### Correspondances
-
-[Critère 4.3 [A] Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, des sous-titres synchronisés (hors cas particuliers)&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-4-3)
-
-[Critère 4.4 [A] Pour chaque média temporel synchronisé pré-enregistré ayant des sous-titres synchronisés, ces sous-titres sont-ils pertinents&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-4-4)
-
-#### Lecture automatique
-
-La lecture automatique de son peut dans certains cas perturber la perception auditive du contenu par l'utilisateur. En effet les non-voyants utilisant un lecteur d'écran, auront alors deux sons en cours de lecture (la synthèse vocale et la lecture automatique) provoquant des confusions sur le contenu de l'application.
+Captions provide a textual information equivalent to the audio content.
 
 ##### Test
 
-1. Activer le lecteur d'écran.
-2. Ouvrir l'application.
-3. Identifier chaque contenu joué automatiquement durant plus de 3 secondes.
-4. Pour chaque contenu joué automatiquement, il existe un bouton pour contrôler la lecture.
+1. Start the application.
+2. Identify each prerecorded time-based media with speech, or significant sounds.
+3. Result: For each of these media, it is possible to play a version with relevant captions.
 
-##### Correspondances
 
-[Critère 4.18 [A] Chaque son déclenché automatiquement est-il contrôlable par l'utilisateur&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-4-18)
+##### Matching criteria
 
-[Critère 13.17 [A] Dans chaque page Web, chaque contenu en mouvement ou clignotant est-il contrôlable par l'utilisateur&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-13-17)
+[Criterion 4.3 [A] Does each prerecorded synchronized time-based media have synchronized captions if necessary (except in particular cases)?](https://disic.github.io/rgaa_referentiel_en/criteria.html#crit-4-3)
 
-[<span lang="en">Autoplay</span> (en anglais)](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/audio-and-video/autoplay)
+[Criterion 4.4 [A] For each prerecorded synchronized time-based media with synchronized captions, are these captions relevant?](https://disic.github.io/rgaa_referentiel_en/criteria.html#crit-4-4)
 
-#### Notification sonore
+#### Autoplay
 
-Dans une application mobile, il est courant d'utiliser des notifications sonores pour avertir l'utilisateur. Toute notification sonore doit avoir un système secondaire d'avertissement pour les utilisateurs sourds ou malentendants.
+Automatic audio playback may in some cases disrupt the user's perception of the content. Indeed, the people using a screen reader, will then have two sounds during reading (the speech synthesis and the automatic audio) causing confusions regarding the contents of the application.
 
 ##### Test
 
-1. Activer le lecteur d'écran.
-2. Ouvrir l'application.
-3. Pour chaque notification sonore, il existe une alternative visuelle de l'alerte.
+1. Activate the screen reader.
+2. Start the application.
+3. Identify each audio content played automatically for more than 3 seconds.
+4. For each automatically played audio content, there is a way to control playback.
 
-##### Correspondances
+##### Matching criteria
 
-[<span lang="en">No audio-only feedback</span> (en anglais)](http://developer.android.com/tools/testing/testing_accessibility.html)
+[Criterion 4.18 [A] Can each autoplaying sound be controlled by the user?](https://disic.github.io/rgaa_referentiel_en/criteria.html#crit-4-18)
 
+[Autoplay](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/audio-and-video/autoplay)
 
-### Boutons et liens
+#### Sound notification
 
-#### Description des boutons et des liens
-
-Vérifier que le lien ou button est explicite. L'intitulé ou le contexte permet de comprendre la fonction et la destination.
-
-##### Test
-1. Activer le lecteur d'écran.
-2. Naviguer sur les boutons et les liens.
-3. Résultat&nbsp;: Chaque lien et chaque bouton sont explicites.
-
-##### Correspondances
-
-[Critère 6.1 [A] Chaque lien est-il explicite (hors cas particuliers)](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-6-1)
-
-[<span lang="en">Descriptive links</span> (en anglais)](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/links/descriptive-links)
-
-#### Informations relatives aux fichiers en téléchargement
-
-Pour chaque lien de téléchargement, des informations relatives à sa consultation doivent être présentes.
+In a mobile application, it is common to use sound notifications to warn the user. Any sound notification must have a secondary warning system for users who cannot use sounds.
 
 ##### Test
 
-1. Ouvrir l'application.
-2. Repérer les fichiers en téléchargement non produits de manière dynamique.
-3. Résultat&nbsp;: Chaque fichier en téléchargement a des informations relatives à son format, à son poids, et si nécessaire, à sa langue.
+1. Start the application.
+2. For each sound notification, there is a visual alternative to the alert.
 
-##### Correspondances
+##### Matching criteria
 
-[Critère 13.6 [A] Dans chaque page Web, pour chaque fichier en téléchargement, des informations relatives à sa consultation sont-elles présentes (hors cas particuliers)&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-13-6)
+[Alternatives for audio and visual content](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/audio-and-video/alternatives-for-audio-and-visual-content)
+
+### Buttons and Links
+
+#### Description of buttons and links
+
+Verify that the link or button is explicit. The text content or the context makes it possible to understand the function and the purpose.
+
+##### Test
+1. Activate the screen reader.
+2. Navigate the buttons and links.
+3. Result: Each link or button is explicit.
+
+##### Matching criteria
+
+[Criterion 6.1 [A] Is each link explicit (except in particular cases)?](https://disic.github.io/rgaa_referentiel_en/criteria.html#crit-6-1)
+
+[Descriptive links](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/links/descriptive-links)
+
+#### Downloadable files information
+
+For each download link, information about the downloaded file must be present.
+
+##### Test
+
+1. Start the application.
+2. Spot the downloadable files that are not generated dynamically.
+3. Result: Each link for downloadable files conveys information about format, weight, and if necessary, language.
+
+##### Matching criteria
+
+[Criterion 13.6 [A] On each Web page, for each file that can be downloaded, is there sufficient information provided  (except in particular cases)?](https://disic.github.io/rgaa_referentiel_en/criteria.html#crit-13-6)
 
 
 ### Structure
 
-#### Menu de navigation à la même place
+#### Consistent layout for navigation menus
 
-Pour faciliter la navigation et ne pas perdre l'utilisateur dans l'application, il est nécessaire de placer le menu de navigation au même endroit.
+To facilitate navigation and help user orientation, it is necessary for the layout of navigation menu to remain consistent across the application.
 
 ##### Test
 
-1. Ouvrir l'application.
-2. Naviguer sur l'ensemble des écrans de l'application.
-3. Résultat&nbsp;: Le menu est toujours à la même place et dans le même ordre relatif des éléments.
+1. Start the application.
+2. Browse all the screens of the application.
+3. Result: The navigation menu is in the same place and in the same relative order of items.
 
-##### Correspondances
+##### Matching criteria
 
-[Critère 12.2 [AA] Dans chaque ensemble de pages, le menu ou les barres de navigation sont-ils toujours à la même place (hors cas particuliers)&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-12-2)
+[Criterion 12.2 [AA] On each set of pages, are the menu and the navigation bars always located at the same place (except in particular cases)?](https://disic.github.io/rgaa_referentiel_en/criteria.html#crit-12-2)
 
 
-### Zones de saisie
+### Input fields
 
 #### Labels
 
-Chaque zone de saisie doit avoir un label pertinent. Il est important pour l'utilisateur de comprendre le contenu qu'il doit saisir
+Each input field must have a relevant label. It is important for the user to understand the expected input.
 
 ##### Test
 
-1. Activer le lecteur d'écran.
-2. Naviguer sur l'ensemble des zones de saisie de l'application.
-3. Résultat&nbsp;: Pour chaque champ de saisie&nbsp;:
-   * le label reste affiché à la prise de focus et après saisie.
-   * le label est correctement énoncé par le lecteur d'écran et est pertinent.
+1. Activate the screen reader.
+2. Navigate through all the input fields of the application.
+3. Result: For each input field:
+   * The label remains displayed when the field receives focus, and after input.
+   * The label is correctly rendered by the screen reader, and is relevant.
 
-##### Correspondances
+##### Matching criteria
 
-[Critère 11.1 [A] Chaque champ de formulaire a-t-il une étiquette&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-11-1)
+[Criterion 11.1 [A] Does each form field have a label?](https://disic.github.io/rgaa_referentiel_en/criteria.html#crit-11-1)
 
-[Critère 11.2 [A] Chaque étiquette associée à un champ de formulaire est-elle pertinente&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-11-2)
+[Criterion 11.2 [A] Is each label associated with a form field relevant?](https://disic.github.io/rgaa_referentiel_en/criteria.html#crit-11-2)
 
-[<span lang="en">labels</span> (en anglais)](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/forms/labels)
+[Labelling form controls](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/forms/labelling-form-controls)
 
 #### Type input
 
-Vérifier que chaque champ de saisie est associé à un type de saisie pertinent.
+Verify that each input field is associated with a relevant input type.
 
 ##### Test
 
-1. Activer le lecteur d'écran.
-2. Naviguer sur l'ensemble des zones de saisie de l'application et ouvrir le clavier.
-3. Résultat&nbsp;: Pour chaque champ de saisie, le format de saisie est associé à un type de saisie pertinent et le lecteur d'écran annonce le type de clavier.
+1. Activate the screen reader.
+2. Navigate all the input fields of the application and open the on-screen keyboard.
+3. Result: For each input field, the input format is associated with a relevant input type and the screen reader outputs the type of keyboard.
 
-##### Correspondances
+##### Matching criteria
 
-[Critère 14.8 Pour chaque champ de saisie, le format de saisie attendu est-il, si possible, associé à un type de saisie pertinent&nbsp;?](https://github.com/DISIC/referentiel-mobile-tactile/blob/master/refentiel-mobile-tactile-liste-criteres.md#148-pour-chaque-champ-de-saisie-le-format-de-saisie-attendu-est-il-si-possible-associé-à-un-type-de-saisie-pertinent)
+[14.8 For each input field, is the expected input format, if possible, associated with a relevant input type?](https://github.com/DISIC/referentiel-mobile-tactile/blob/en/mobile-touch-guidelines-criteria.md#148-for-each-input-field-is-the-expected-input-format-if-possible-associated-with-a-relevant-input-type)
 
-[<span lang="en">Keyboard input types</span> (en anglais)](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/forms/keyboard-input-types)
+[Form inputs](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/forms/form-inputs)
 
-### Focus
+### Focus management
 
-#### Éléments focusables
+#### Focusable elements
 
-Vérifier que l'intégralité de l'application est correctement restituée par les lecteurs d'écran dans un ordre logique.
-
-##### Test
-
-1. Activer le lecteur d'écran.
-2. Ouvrir l'application.
-3. Naviguer sur l'ensemble des éléments de l'application en [balayant vers la droite](#d%C3%A9placer-le-focus-sur-l%C3%A9l%C3%A9ment-suivant).
-4. Puis retester en naviguant avec un clavier <span lang="en">Bluetooth</span>.
-5. Résultat&nbsp;: Chaque élément est correctement <span lang="en">focusable</span> dans un ordre logique.
-
-##### Correspondances
-
-[Critère 12.13 [A] Dans chaque page Web, l'ordre de tabulation est-il cohérent&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-12-13)
-
-[<span lang="en">Focus order</span> (en anglais)](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/focus/focus-order)
-
-#### Signaler la prise de focus
-
-Vérifier que la prise de <span lang="en">focus</span> est correctement signalée.
+Verify that the entire application is correctly rendered by the screen readers in a logical order.
 
 ##### Test
 
-1. Activer le lecteur d'écran.
-2. Ouvrir l'application.
-3. Naviguer sur l'ensemble des éléments de l'application en utilisant les gestes de base ou un clavier <span lang="en">Bluetooth</span>.
-5. Résultat&nbsp;: Pour chaque élément la prise de <span lang="en">focus</span> est visible.
+1. Activate the screen reader.
+2. Start the application.
+3. Navigate all the elements of the application by [moving the focus to the next item](#move-the-focus-to-the-next-item).
+4. Then retest by navigating with a keyboard.
+5. Result: Each element is focusable in a logical order.
 
-##### Correspondances
+##### Matching criteria
 
-[Critère 10.7 [A] Dans chaque page Web, pour chaque élément recevant le focus, la prise de focus est-elle visible&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-10-7)
+[Criterion 12.13 [A] On each Web page, is tabbing order consistent?](https://disic.github.io/rgaa_referentiel_en/criteria.html#crit-12-13)
 
-[<span lang="en">Visible focus</span> (en anglais)](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/design/visible-focus)
+[Focus order](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/focus/focus-order)
 
+#### Focus visibility
 
-#### Piège au clavier
-
-Éviter les pièges au clavier, empêchant la navigation correcte dans l'application.
+Check that a visible cue marks the element receiving focus.
 
 ##### Test
 
-1. Activer le lecteur d'écran.
-2. Ouvrir l'application.
-3. Naviguer sur les éléments de l'application en utilisant les touches Tab, Shift+Tab, Flèches et Entrée.
-4. Résultat&nbsp;: Pour chaque élément de l'application, il est possible d'atteindre l'élément précédent et suivant.
+1. Activate the screen reader.
+2. Open the application.
+3. Navigate in all application elements using basic gestures or a keyboard.
+5. Result: For each item receiving focus, the focus is visible.
 
-##### Correspondances
+##### Matching criteria
 
-[Critère 12.14 [A] Dans chaque page Web, la navigation ne doit pas contenir de piège au clavier. Cette règle est-elle respectée&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-12-14)
+[Criterion 10.7 [A] On each Web page, is the focus visible for each element that receives focus?](https://disic.github.io/rgaa_referentiel_en/criteria.html#crit-10-7)
 
-[<span lang="en">Keyboard trap</span> (en anglais)](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/focus/keyboard-trap)
+[Visible focus](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/design/visible-focus)
+
+
+#### Keyboard trap
+
+Avoid keyboard traps, preventing navigation in the application.
+
+##### Test
+
+1. Activate the screen reader.
+2. Open the application.
+3. Using a keyboard, navigate the application elements using the Tab, Shift + Tab, Arrows and Enter keys.
+4. Result: From each focusable element of the application, it is possible to reach the previous and following element.
+
+##### Matching criteria
+
+[Criterion 12.14 [A] On each Web page, navigation must not contain keyboard trap. Has this rule been followed?](https://disic.github.io/rgaa_referentiel_en/criteria.html#crit-12-14)
+
+[Keyboard trap](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/focus/keyboard-trap)
 
 ### Consultation
 
-#### Rafraîchissement automatique
+#### Automatic refresh
 
-Sous mobile l'écran doit être rafraîchie uniquement sous l'action de l'utilisateur. Le rafraîchissement d'écran automatique peut empêcher l'utilisateur de terminer une tâche en cours ou créer de la confusion pour l'utilisateur.
-
-##### Test
-
-1. Ouvrir l'application.
-2. Naviguer sur les éléments de l'application.
-3. Résultat&nbsp;: L'application n'est pas rafraîchie automatiquement.
-
-##### Correspondances
-
-[Critère 13.1 [A] Pour chaque page Web, l'utilisateur a-t-il le contrôle de chaque limite de temps modifiant le contenu (hors cas particuliers)&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-13-1)
-
-[<span lang="en">Page refreshes</span> (en anglais)](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/scripts-and-dynamic-content/page-refreshes)
-
-
-#### Effet de flash
-
-Il faut éviter d'afficher des contenus qui changent brusquement de luminosité ou d'utiliser un effet de flash pour éviter de provoquer des crises.
+In mobile apps the interface must be refreshed only from user action. Automatic interface refresh may prevent the user from completing a task, or generate confusion for the user.
 
 ##### Test
 
-1. Ouvrir l'application.
-2. Naviguer dans l'application.
-3. Résultat&nbsp;: L'application n'utilise pas de flash plus de trois fois dans l'intervalle d'une seconde.
+1. Open the application.
+2. Browse the application elements.
+3. Result: The interface is never refreshed automatically, without user action.
 
-##### Correspondances
+##### Matching criteria
 
-[Critère 13.15 [A] Dans chaque page Web, les changements brusques de luminosité ou les effets de flash sont-ils correctement utilisés&nbsp;?](http://references.modernisation.gouv.fr/rgaa/criteres.html#crit-13-15)
+[Criterion 13.1 [A] For each Web page, can the user control each time limit that modifies content (except in particular cases)?](https://disic.github.io/rgaa_referentiel_en/criteria.html#crit-13-1)
 
-#### Orientation du mobile
+[Page refreshes](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/scripts-and-dynamic-content/page-refreshes)
 
-Le développeur ne doit pas imposer l'orientation du mobile pour accéder au contenu. Le contenu doit être disponible quelle que soit l'orientation.
+
+#### Flash Effect
+
+Avoid displaying content with sudden changes in luminosity, or flashing effects, to avoid causing seizures.
 
 ##### Test
 
-1. Ouvrir l'application.
-2. Naviguer sur l'écran en mode portrait.
-3. Naviguer sur l'écran' en mode paysage.
-4. Résultat&nbsp;: L'application permet d'accéder au même contenu.
+1. Open the application.
+2. Navigate through the application.
+3. Result: The application does not use flashing effects more than three times within one second.
 
-##### Exemple
+##### Matching criteria
 
-Dans cette exemple en erreur le contenu n'est pas consultable en mode portrait.
+[Criterion 13.15 [A] On each Web page, are sudden changes in luminosity or flashing effects used appropriately?](https://disic.github.io/rgaa_referentiel_en/criteria.html#crit-13-15)
 
-<img height="281" width="500" alt="Capture d'écran d'Inbox demandant à l'utilisateur de tourner son mobile" src="img/rotate_device.jpg">
+#### Mobile Orientation
 
-Source&nbsp;: [<span lang="en">WTF Mobile</span> (en anglais)](http://wtfmobileweb.com/)
+The orientation of the device must not be imposed to access  content. Content must be available regardless of orientation.
 
-##### Correspondances
+##### Test
 
-[14.7 L'accès au contenu ne doit pas dépendre d'une orientation de l'écran (portrait ou paysage), cette règle est-elle respectée&nbsp;?](https://github.com/DISIC/referentiel-mobile-tactile/blob/master/refentiel-mobile-tactile-liste-criteres.md#147-laccès-au-contenu-ne-doit-pas-dépendre-dune-orientation-de-lécran-portrait-ou-paysage-cette-règle-est-elle-respectée)
+1. Open the application.
+2. Navigate the interface in portrait mode.
+3. Navigate the interface in landscape mode.
+4. Result: The application allows access to the same content.
 
-## Ressources et références
+##### Example
 
-* [Référentiel Technique RGAA 3](http://references.modernisation.gouv.fr/rgaa/criteres.html)
-* [Référentiel spécifique aux plateformes mobiles/tactiles](https://github.com/DISIC/referentiel-mobile-tactile)
-* <a href="http://www.w3.org/TR/mobile-accessibility-mapping/" lang="en">Mobile Accessibility&nbsp;: How WCAG 2.0 and Other W3C/WAI Guidelines Apply to Mobile</a>
-* <a href="http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile" lang="en">BBC Standards and Guidelines for Mobile Accessibility</a>
-* [<span lang="en">Verifying App Accessibility on iOS</span> (en anglais)](https://developer.apple.com/library/ios/technotes/TestingAccessibilityOfiOSApps/TestingtheAccessibilityofiOSApps/TestingtheAccessibilityofiOSApps.html#//apple_ref/doc/uid/TP40012619)
-* [<span lang="en">Accessibility Testing Checklist on Android</span> (en anglais)](http://developer.android.com/tools/testing/testing_accessibility.html)
+In this example, the content cannot be viewed in portrait mode.
 
-## Guides connexes
+<img height = "281" width = "500" alt = "Screenshot from the Inbox app, asking user to rotate the device" src="img/rotate_device.jpg" />
 
-Les guides suivants peuvent être consultés en complément&nbsp;:
+Source: [WTF Mobile](http://wtfmobileweb.com/)
 
-* [Guide de conception d'applications mobiles accessibles](https://github.com/DISIC/guide-mobile_app_conception)
-* [Guide de développement d'applications mobiles accessibles avec les API Android et iOS](https://github.com/DISIC/guide-mobile_app_dev_natif)
-* [Guide de développement d'applications mobiles hybrides accessibles avec Ionic et OnsenUI](https://github.com/DISIC/guide-mobile_app_dev_hybride)
+##### Matching criteria
+
+[14.7 Access to content should not depend on a screen orientation (portrait or landscape), has this rule been followed?](https://github.com/DISIC/referentiel-mobile-tactile/blob/en/mobile-touch-guidelines-criteria.md#147-access-to-content-should-not-depend-on-a-screen-orientation-portrait-or-landscape-has-this-rule-been-followed)
+
+## Resources and References
+
+* [RGAA 3 Technical Reference](https://disic.github.io/rgaa_referentiel_en/criteria.html)
+* [Technical reference for mobile/tactile platforms](https://github.com/DISIC/referentiel-mobile-tactile/blob/en/mobile-touch-guidelines-criteria.md)
+* [Mobile Accessibility: How WCAG 2.0 and Other W3C/WAI Guidelines Apply to Mobile](http://www.w3.org/TR/mobile-accessibility-mapping/)
+* [BBC Standards and Guidelines for Mobile Accessibility](http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile)
+* [Verifying App Accessibility on iOS](https://developer.apple.com/library/content/technotes/TestingAccessibilityOfiOSApps/TestingtheAccessibilityofiOSApps/TestingtheAccessibilityofiOSApps.html#//apple_ref/doc/uid/TP40012619)
+* [Accessibility Testing on Android](https://developer.android.com/training/accessibility/testing.html)
+
+## Related documents
+
+The following guides can be consulted in addition:
+
+* [Design Guide for Accessible Mobile Apps](https://github.com/DISIC/guide-mobile_app_conception)
+* [Accessible mobile app development guides with Android and iOS APIs](https://github.com/DISIC/guide-mobile_app_dev_natif)
+* [Accessible hybrid mobile app development guide with Ionic and OnsenUI](https://github.com/DISIC/guide-mobile_app_dev_hybride)
 
 ## Licence
-Ce document est la propriété du Secrétariat général à la modernisation de l'action publique français (SGMAP). Il est placé sous la [licence ouverte 1.0 ou ultérieure](http://www.etalab.gouv.fr/licence-ouverte-open-licence), équivalente à une licence <i lang="en">Creative Commons BY</i>. Pour indiquer la paternité, ajouter un lien vers la version originale du document disponible sur le [compte <span lang="en">Github</span> de la DInSIC](https://github.com/DISIC).
+This document is the property of the <span lang="fr">Secrétariat général à la modernisation de l'action publique</span> (SGMAP). It is placed under [Open Licence 1.0 or later (PDF, 541 kb)](http://ddata.over-blog.com/xxxyyy/4/37/99/26/licence/Licence-Ouverte-Open-Licence-ENG.pdf), equivalent to a Creative Commons BY licence. To indicate authorship, add a link to the original version of the document available on the [DINSIC's GitHub account](https://github.com/DISIC).
