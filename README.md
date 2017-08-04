@@ -728,9 +728,9 @@ Source: [WTF Mobile](http://wtfmobileweb.com/)
 
 The following guides can be consulted in addition:
 
-* [Design Guide for Accessible Mobile Apps](https://github.com/DISIC/guide-mobile_app_conception)
-* [Accessible mobile app development guides with Android and iOS APIs](https://github.com/DISIC/guide-mobile_app_dev_natif)
-* [Accessible hybrid mobile app development guide with Ionic and OnsenUI](https://github.com/DISIC/guide-mobile_app_dev_hybride)
+* [Design Guide for Accessible Mobile Apps](https://github.com/DISIC/guide-mobile_app_conception/tree/english)
+* [Accessible mobile app development guides with Android and iOS APIs](https://github.com/DISIC/guide-mobile_app_dev_natif/tree/english)
+* [Accessible hybrid mobile app development guide with Ionic and OnsenUI](https://github.com/DISIC/guide-mobile_app_dev_hybride/tree/english)
 
 ## Licence
 This document is the property of the <span lang="fr">Secrétariat général à la modernisation de l'action publique</span> (SGMAP). It is placed under [Open Licence 1.0 or later (PDF, 541 kb)](http://ddata.over-blog.com/xxxyyy/4/37/99/26/licence/Licence-Ouverte-Open-Licence-ENG.pdf), equivalent to a Creative Commons BY licence. To indicate authorship, add a link to the original version of the document available on the [DINSIC's GitHub account](https://github.com/DISIC).
